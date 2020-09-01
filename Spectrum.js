@@ -27,19 +27,12 @@ class Spectrum {
 
     init() {
         this.setAudioContext();
-        console.log("Getting context");
         this.setAnalyser();
-        console.log("Getting analyzer");
         this.setFrequency();
-        console.log("Getting frequency");
         this.setBufferSrc();
-        console.log("Getting buffer src");
         this.setSrc();
-        console.log("Getting audio src");
         this.setDefaultCanvas();
-        console.log("Getting default canvas");
         this.start();
-        console.log("started");
     }
 
     start() {
@@ -51,7 +44,6 @@ class Spectrum {
                 if (_this.isPlaying) {
                     return _this.pause();
                 } else {
-                    console.log(_this.audioContext.state);
                     return _this.audioContext.state === 'suspended' ? _this.play() : _this.load();
                 }
             }
