@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <audio id="audio" src="path/to/your/audio"></audio>
+    <canvas id="canvas" class="canvas" width="1000" height="1000"></canvas>
+</body>
+
+<script src="./Spectrum.js"></script>
+
+<script>
+    const spectrum = new Spectrum({
+        FFTSize: 2048,
+        canvasID: 'canvas',
+        audioID: 'audio',
+        barColor: 'rgb(9, 132, 227)',
+        radius: 200
+    });
+
+</script>
+
+</html>
