@@ -15,9 +15,10 @@ class Spectrum {
         this.barWidth = 3;
         this.barHeight = 15;
         this.barSpacing = 3;
-        this.barColor = config.barColor;
+        this.barColor = config.barColor || "rgb(9, 132, 227)";
         this.gradient = null;
-        this.radius = config.radius;
+        this.radius = config.radius || 140;
+        this.fullCircle = config.fullCircle || false;
 
         this.WIDTH = window.innerWidth;
         this.HEIGHT = window.innerHeight;
@@ -125,7 +126,7 @@ class Spectrum {
         this.audioContext.resume();
     }
 
-    renderText(){
+    renderText() {
         var cx = this.canvas.width / 2;
         var cy = this.canvas.height / 2;
         var correction = 10;
@@ -147,7 +148,9 @@ class Spectrum {
         var radius = this.radius;
         var maxBarNum = Math.floor((radius * 2 * Math.PI) / (this.barWidth + this.barSpacing));
         var slicedPercent = Math.floor((maxBarNum * 25) / 100);
-        var barNum = maxBarNum - slicedPercent;
+
+        var barNum = (this.fullCircle) ? maxBarNum : maxBarNum - slicedPercent;
+        
         var freqJump = Math.floor(this.frequency.length / maxBarNum);
 
         for (var i = 0; i < barNum; i++) {
